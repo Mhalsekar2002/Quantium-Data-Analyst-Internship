@@ -1,0 +1,28 @@
+import pandas as pd
+import numpy as np
+
+# Define the file paths
+transaction_file_path = "C:\\Users\\prath\\Downloads\\QVI_transaction_data.csv"
+purchase_file_path = "C:\\Users\\prath\\Downloads\\QVI_purchase_behaviour.csv"
+
+# Read the CSV files
+transaction_data = pd.read_csv(transaction_file_path)
+purchase_data = pd.read_csv(purchase_file_path)
+dataset = (transaction_data + purchase_data)
+
+dataset.head()
+
+# Calculate total sales
+total_sales = transaction_data['TOT_SALES'].sum()
+print("Total sales:", total_sales)
+
+#TOTAL NUMBER OF CUSTOMERS
+dataset.describe()
+
+#AVERAGE NUMER OF TRANSACTION PER CUSTOMER
+dataset.shape
+
+total_customers = 241584
+transactions = 264834
+avg_transaction = total_customers/transactions
+print(avg_transactions)

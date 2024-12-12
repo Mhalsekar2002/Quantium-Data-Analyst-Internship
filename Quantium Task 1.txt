@@ -1,0 +1,46 @@
+import pandas as pd
+import numpy as np
+import seaborn as sns
+
+# Define the file paths
+transaction_file_path = "C:\\Users\\prath\\Downloads\\QVI_transaction_data.csv"
+purchase_file_path = "C:\\Users\\prath\\Downloads\\QVI_purchase_behaviour.csv"
+
+# Read the CSV files
+transaction_data = pd.read_csv(transaction_file_path)
+purchase_data = pd.read_csv(purchase_file_path)
+
+transaction_data.heaad()
+
+# Read the customer data into panda DataFrame
+customer_file_path = "C:\\Users\\prath\\Downloads\\QVI_purchase_behaviour.csv"
+
+# Read the CSV file into a DataFrame
+customer_data = pd.read_csv(customer_file_path)
+
+customer_data.head()
+
+#SUMMARIZE DATASET
+transaction_data.describe()
+
+#CHECK THE NULL 
+transaction_data.isnull().sum()
+
+#CHECK THE DATA TYPES
+data_type = transaction_data.dtypes
+print(data_type)
+
+#EXAMINE THE OUTLIERS
+import matplotlib.pyplot as plt
+import seaborn as sb
+
+# Create a histogram of TOT_SALES
+sns.histplot(transaction_data['TOT_SALES'], kde=True)
+
+numericdata = transaction_data.select_dtypes (['float' , 'int'])
+numericdata.head()
+
+x = numericdata[numericdata['TOT_SALES'] < 8.000]
+sns.displot(x['TOT_SALES'], kde=True)
+
+sns.boxplot(x.TOT_SALES)
